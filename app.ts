@@ -11,7 +11,7 @@ const app = express();
 const server = http.createServer(app);
 
 // Инициализация Socket.IO
-const io = new Server(server,{
+const io = new Server(server, {
     cors: {
         origin: "*"
     }
@@ -19,8 +19,7 @@ const io = new Server(server,{
 
 socketServer(io)
 
-// Middleware для CORS
-app.use(cors());
+app.use(cors())
 
 // Middleware для обработки JSON-запросов
 app.use(bodyParser.json());
@@ -29,11 +28,11 @@ app.use(bodyParser.json());
 app.use('/api/room', require('./src/rooms/apiRoom'));
 app.use('/api/user', require('./src/users/apiUser'));
 
-const port = process.env.PORT || 3001;
-app.listen(port, () => {
+const port = 8080;
+app.listen(port, '192.168.0.100', () => {
     // sequelizeDataBase()
     console.log(`Сервер запущен на порту ${port}`);
 });
 // Запускаем сервер
-server.listen(8999, () => console.log('Сервер sockets запущен на порту 8999'));
+server.listen(8999, '192.168.0.100', () => console.log('Сервер sockets запущен на порту 8999'));
 

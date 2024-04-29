@@ -38,7 +38,7 @@ router.post('/register', async (req, res) => {
 router.post('/auth', async (req, res) => {
 
     const reqBody: { name: string, password: string } = req.body
-
+    console.log(reqBody)
     const result: IResultAuth = await authenticateUser(reqBody.name, reqBody.password)
 
     if (result.user === null) {
